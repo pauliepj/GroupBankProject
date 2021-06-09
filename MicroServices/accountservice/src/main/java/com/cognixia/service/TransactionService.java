@@ -20,6 +20,8 @@ public interface TransactionService {
 	@GetMapping(value = "/transaction/customer/{customer}")
 	List<Transaction> findByCutomer(@PathVariable("customer") Integer customer);
 	
+	
+	
 	@GetMapping(value = "/transaction/customer/{account}")
 	List<Transaction> findByAccount(@PathVariable("account") Integer account);
 
