@@ -28,7 +28,12 @@ public class TransactionController {
 	public String helloThere() {
 		return "Hello There!!";
 	}
-
+	
+	@GetMapping(value="/transaction/{accountId}")
+	public List<Transaction> findByAccountId(@PathVariable Long accountId){
+		logger.info("Find all transactions by Account Id:"+accountId);
+		return transactionRepository.findAllByAccountId(accountId);
+	}
 
 	@GetMapping(value = "/transaction/{transactionId}")
 	public Transaction findByTransactionId(@PathVariable Long transactionId) {

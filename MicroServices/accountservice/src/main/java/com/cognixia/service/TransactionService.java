@@ -18,11 +18,9 @@ import com.cognixia.model.Transaction;
 public interface TransactionService {
 
 	@GetMapping(value = "/transaction/customer/{customer}")
-	List<Transaction> findByCutomer(@PathVariable("customer") Integer customer);
+	List<Transaction> findByCustomer(@PathVariable("customer") Integer customer);
 	
-	
-	
-	@GetMapping(value = "/transaction/customer/{account}")
+	@GetMapping(value = "/transaction/{account}")
 	List<Transaction> findByAccount(@PathVariable("account") Integer account);
 
 	@PutMapping(value = "/transaction/{transactionId}")
@@ -33,5 +31,4 @@ public interface TransactionService {
 
 	@PostMapping(value = "/transaction")
 	Transaction update(@RequestBody Transaction transaction);
-
 }

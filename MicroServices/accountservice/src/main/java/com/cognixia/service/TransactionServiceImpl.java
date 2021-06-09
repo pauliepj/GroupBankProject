@@ -40,5 +40,11 @@ public class TransactionServiceImpl implements TransactionService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Transaction> findByCustomer(Integer customer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
