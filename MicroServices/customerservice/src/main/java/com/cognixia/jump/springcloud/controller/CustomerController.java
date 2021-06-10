@@ -42,9 +42,6 @@ public class CustomerController {
 	@PostMapping(value="/dummycustomer")
 	public Customer dummy() {
 		Customer customer = new Customer("dummyUser", "password", "Jhon", "1234567890", "example@email.com", "NewYork");
-		List<Account> accounts = customer.getAccounts();
-		
-		accounts.forEach(account -> service.save(account));
 		Customer result = repository.save(customer);
 		result.setAccounts(service.findByCustomer(result.getCustomerId()));
 		return result;
