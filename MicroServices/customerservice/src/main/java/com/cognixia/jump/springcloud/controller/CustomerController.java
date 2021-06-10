@@ -13,6 +13,8 @@ import com.cognixia.jump.springcloud.model.Account;
 import com.cognixia.jump.springcloud.model.Customer;
 import com.cognixia.jump.springcloud.repository.CustomerRepository;
 import com.cognixia.jump.springcloud.service.AccountService;
+
+@RestController
 public class CustomerController {
 
 	@Autowired
