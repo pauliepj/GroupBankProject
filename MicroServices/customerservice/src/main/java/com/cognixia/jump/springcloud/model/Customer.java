@@ -49,6 +49,34 @@ public class Customer implements Serializable{
 	public Customer() {
 		super();
 	}
+	
+	public Customer(String userName, String password, String customerName, String phone, String email, String city) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.customerName = customerName;
+		this.phone = phone;
+		this.email = email;
+		this.city = city;
+	}
+
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public Integer getCustomerId() {
 		return customerId;
@@ -100,8 +128,10 @@ public class Customer implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", phone=" + phone + ", email="
-				+ email + ", city=" + city + ", accounts=" + accounts + "]";
+		return "Customer [customerId=" + customerId + ", userName=" + userName + ", password=" + password
+				+ ", customerName=" + customerName + ", phone=" + phone + ", email=" + email + ", city=" + city
+				+ ", accounts=" + accounts + "]";
 	}
+
 
 }
