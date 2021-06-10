@@ -21,7 +21,7 @@ public class CustomerController {
 	@Autowired
 	CustomerRepository repository;
 	
-	@PostMapping(value="/customer")
+	@PostMapping(value="/customers")
 	public Customer save(@RequestBody Customer customer) {
 		
 		List<Account> accounts = customer.getAccounts();
@@ -32,7 +32,13 @@ public class CustomerController {
 		return result;
 	}
 	
-	@GetMapping(value="/customer/{customerId}")
+	@GetMapping(value="/customers")
+	public List<Customer> findAllCustomers(){
+		return repository.findAll();
+	}
+	
+	
+	@GetMapping(value="/customers/{customerId}")
 	public Customer findCustomerById(@PathVariable("customerId") Integer customerId) {
 		Customer customer = repository.findByCustomerId(customerId);
 		customer.setAccounts(service.findByCustomer(customer.getCustomerId()));
