@@ -43,8 +43,7 @@ public class Customer implements Serializable{
 	@Column(name="CITY")
 	String city;
 	
-	@Transient
-	List<Account> accounts;
+	
 
 	public Customer() {
 		super();
@@ -118,20 +117,6 @@ public class Customer implements Serializable{
 		this.city = city;
 	}
 
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
-
-	@Override
-	public String toString() {
-		return "Customer [customerId=" + customerId + ", userName=" + userName + ", password=" + password
-				+ ", customerName=" + customerName + ", phone=" + phone + ", email=" + email + ", city=" + city
-				+ ", accounts=" + accounts + "]";
-	}
 
 
 }

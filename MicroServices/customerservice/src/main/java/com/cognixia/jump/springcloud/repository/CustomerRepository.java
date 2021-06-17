@@ -9,5 +9,5 @@ import com.cognixia.jump.springcloud.model.Customer;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
-	Customer findByCustomerId(Integer customerId);
+	List<Customer> findByCustomerId(Integer customerId);
 }

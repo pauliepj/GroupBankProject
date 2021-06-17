@@ -30,12 +30,7 @@ public class CustomerController {
 	
 	@PostMapping(value="/customer")
 	public Customer save(@RequestBody Customer customer) {
-		
-		List<Account> accounts = customer.getAccounts();
-		
-		accounts.forEach(account -> service.save(account));
 		Customer result = repository.save(customer);
-		result.setAccounts(service.findByCustomer(result.getCustomerId()));
 		return result;
 	}
 	
@@ -43,15 +38,13 @@ public class CustomerController {
 	public Customer dummy() {
 		Customer customer = new Customer("dummyUser", "password", "Jhon", "1234567890", "example@email.com", "NewYork");
 		Customer result = repository.save(customer);
-		result.setAccounts(service.findByCustomer(result.getCustomerId()));
 		return result;
 	}
 	
 	
 	@GetMapping(value="/customer/{customerId}")
-	public Customer findCustomerById(@PathVariable("customerId") Integer customerId) {
-		Customer customer = repository.findByCustomerId(customerId);
-		customer.setAccounts(service.findByCustomer(customer.getCustomerId()));
+	public List<Customer> findCustomerById(@PathVariable("customerId") Integer customerId) {
+		List<Customer> customer = repository.findByCustomerId(customerId);
 		return customer;
 	}
 }
