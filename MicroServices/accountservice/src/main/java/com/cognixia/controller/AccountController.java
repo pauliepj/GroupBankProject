@@ -19,7 +19,7 @@ import com.cognixia.repository.AccountRepository;
 import com.cognixia.service.TransactionService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000/", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class AccountController {
 
 	
@@ -35,19 +35,12 @@ public class AccountController {
     
 	@GetMapping("/helloThere")
 	public String helloThere() {
-		return "Hello There!!";
+		return "Hello Thereeee!!";
 	}
 	
-	@GetMapping(value = "/account")
-	public Iterable<Account> all() {
-
-		List<Account> accounts = accountRepository.findAll();
-
-		for (Account c : accounts) {
-			c.setTransaction(transactionService.findByAccount(c.getAccountId()));
-		}
-		logger.info("Find all accounts information ");
-		return accounts;
+	@GetMapping(value = "/allaccounts")
+	public List<Account> all() {
+		return accountRepository.findAll();
 	}
 
 

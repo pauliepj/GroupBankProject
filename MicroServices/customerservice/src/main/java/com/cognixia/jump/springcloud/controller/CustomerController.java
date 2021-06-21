@@ -1,5 +1,6 @@
 package com.cognixia.jump.springcloud.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import com.cognixia.jump.springcloud.repository.CustomerRepository;
 import com.cognixia.jump.springcloud.service.AccountService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000/", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class CustomerController {
 
 	@Autowired
@@ -37,12 +38,20 @@ public class CustomerController {
 	}
 	
 	@GetMapping(value="/dummycustomer")
-	public Customer dummy() {
-		Customer customer = new Customer("dummyUser", "password", "Jhon", "1234567890", "example@email.com", "NewYork");
-		Customer result = repository.save(customer);
-		return customer;
+	public List<Customer> dummy() {
+		List<Customer> customerList = new ArrayList<Customer>();
+		Customer customer1= new Customer("dummyUser", "password", "Jhon", "1234567890", "example@email.com", "NewYork");
+		Customer customer2 = new Customer("smartUser", "password", "paul", "1234567890", "example@email.com", "Florida");
+		customerList.add(customer1);
+		customerList.add(customer2);
+		return customerList;
 	}
-	
+	@GetMapping(value="/allcustomers")
+	public List<Customer> findAllCustomer() {
+		return repository.findAll();
+		
+	}
+
 	
 	@GetMapping(value="/customer/{customerId}")
 	public List<Customer> findCustomerById(@PathVariable("customerId") Integer customerId) {
