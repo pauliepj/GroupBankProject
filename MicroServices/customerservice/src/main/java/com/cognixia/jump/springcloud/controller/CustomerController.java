@@ -3,6 +3,7 @@ package com.cognixia.jump.springcloud.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import com.cognixia.jump.springcloud.repository.CustomerRepository;
 import com.cognixia.jump.springcloud.service.AccountService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000/", maxAge = 3600)
 public class CustomerController {
 
 	@Autowired
@@ -34,11 +36,11 @@ public class CustomerController {
 		return result;
 	}
 	
-	@PostMapping(value="/dummycustomer")
+	@GetMapping(value="/dummycustomer")
 	public Customer dummy() {
 		Customer customer = new Customer("dummyUser", "password", "Jhon", "1234567890", "example@email.com", "NewYork");
 		Customer result = repository.save(customer);
-		return result;
+		return customer;
 	}
 	
 	
